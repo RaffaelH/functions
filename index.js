@@ -164,6 +164,8 @@ exports.voteTrigger = functions.firestore.document('votes/{voteId}').onUpdate((c
                             //type save
                             if(val.voteType === "save"){
 
+                                console.log(1);
+
                                 if(count === doneCount){  
 
                                     const payload = {
@@ -306,7 +308,7 @@ exports.voteTrigger = functions.firestore.document('votes/{voteId}').onUpdate((c
                         //continue here when vote is done
                         if(!val.done){
                             let count = 0;
-                            if(val.voteType === "award" || val.voteType === "conference"){   
+                            
                                 for (let [key, value] of Object.entries(val.voted)) {
                                     if(value){
                                         count++;
@@ -327,7 +329,7 @@ exports.voteTrigger = functions.firestore.document('votes/{voteId}').onUpdate((c
                                         }
                                     );
                                 }
-                            }   
+                              
                         } 
                     }  
                        
